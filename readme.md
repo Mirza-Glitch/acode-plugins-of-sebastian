@@ -1,18 +1,14 @@
 <div align="center">
-<h1>Visual Theme Editor</h1>
+<h1>Theme Editor Night Owl</h1>
 </div>
 
 <div align="center"> 
  <img alt="profile" src="https://raw.githubusercontent.com/sebastianjnuwu/acode-plugins/theme-editor/icon.png" width="60%" />
   <br>
   <img alt="License" src="https://img.shields.io/badge/License-Apache%202.0-purple.svg"/>
-  <img alt="Version" src="https://img.shields.io/badge/Latest%20version-V1.0.2-purple"/>
+  <img alt="Version" src="https://img.shields.io/badge/Latest%20version-V1.0.3-purple"/>
 
-<p>The <strong>"Visual Theme Editor"</strong> is a plugin exclusively for adding new themes to the Acode editor, themes made by the community and the creator.</p>
-
- - New themes for Acode
- - Best styles available for your editor
- - Monthly theme updates and additions
+<p>Explore the night world with <strong>"Night Owl"</strong> theme for editor! Unleash your creativity and code in comfort wherever you are. Master the art of programming with elegance and practicality! 🌙🦉</p>
 
 </div>
 
@@ -22,10 +18,10 @@
     <br>
     <details>
         <summary>
-        <strong><code>v1.0.2</code></strong>
+        <strong><code>v1.0.3</code></strong>
         </summary>
       <ul>
-     <li>Fixing bugs: theme when leaving acode was reset was fixed by <a href="https://github.com/legend-sabbir">Legend-sabbir</a> 💜</li> 
+     <li>The night owl theme gets an update to improve its performance and fix some bugs, now it's ready to use!</li> 
     </ul>
   </details>
 </details>
