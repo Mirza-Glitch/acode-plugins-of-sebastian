@@ -6,7 +6,7 @@
  <img alt="profile" src="https://raw.githubusercontent.com/sebastianjnuwu/acode-plugins/theme-editor/icon.png" width="60%" />
   <br>
   <img alt="License" src="https://img.shields.io/badge/License-Apache%202.0-purple.svg"/>
-  <img alt="Version" src="https://img.shields.io/badge/Latest%20version-V1.0.3-purple"/>
+  <img alt="Version" src="https://img.shields.io/badge/Latest%20version-V1.0.4-purple"/>
 
 <p>Explore the night world with <strong>"Night Owl"</strong> theme for editor! Unleash your creativity and code in comfort wherever you are. Master the art of programming with elegance and practicality! 🌙🦉</p>
 
@@ -16,6 +16,14 @@
 <details>
     <summary>See some details about the versions.</summary>
     <br>
+    <details>
+        <summary>
+        <strong><code>v1.0.4</code></strong>
+        </summary>
+      <ul>
+     <li>Putting colors in different key numbers</li> 
+    </ul>
+  </details>
     <details>
         <summary>
         <strong><code>v1.0.3</code></strong>
