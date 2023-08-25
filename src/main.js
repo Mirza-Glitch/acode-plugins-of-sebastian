@@ -45,14 +45,8 @@ class Editor {
 
 if (window.acode) {
   
-  acode.setPluginInit(plugin.id, (url) => {
-  
-  if (!url.endsWith('/')) return url += '/';
-    
-  new Editor().url = url;
-  new Editor().init();
- 
- });
+  acode.setPluginInit(plugin.id, () => new Editor().init());
   
   acode.setPluginUnmount(plugin.id, () => new Editor().destroy());
+  
 };
