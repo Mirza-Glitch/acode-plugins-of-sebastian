@@ -1,14 +1,9 @@
 {
   "name": "acode-theme-editor-night-owl",
-  "description": "Themes to use in the Acode editor!",
-  "version": "1.0.6",
+  "version": "1.0.7",
   "type": "module",
   "license": "Apache-2.0",
   "author": "sebastianjnuwu <sebastianjnuwu@gmail.com>",
-  "keywords": [
-    "acode",
-    "editor"
-  ],
   "scripts": {
     "zip": "node .acode/build.js",
     "build": "webpack",
