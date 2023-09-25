@@ -39,7 +39,8 @@
   }
 
   .ace_gutter-active-line {
-    background-color: rgba(98, 114, 164, 0.19);
+    color: yellow;
+    text-shadow: 0 0 5px yellow;
   }
 
   .ace_marker-layer .ace_selected-word {
