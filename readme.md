@@ -3,7 +3,7 @@
 </div>
 
 <div align="center"> 
- <img alt="profile" src="data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iNDIiIGhlaWdodD0iNjQiIHZpZXdCb3g9IjAgMCA0MiA2NCIgZmlsbD0ibm9uZSIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj4KPHBhdGggZmlsbC1ydWxlPSJldmVub2RkIiBjbGlwLXJ1bGU9ImV2ZW5vZGQiIGQ9Ik0wIDQ0TDMuODE4MTggMTZMMTkuMDkwOSAwTDM4LjE4MTggMjBMMjYuNzI3MyAzMkw0MiA0OEwxOS4wOTA5IDY0TDAgNDRaIiBmaWxsPSIjMDBEMUIyIi8+Cjwvc3ZnPgo=" width="25%" />
+ <img alt="profile" src="https://raw.githubusercontent.com/sebastianjnuwu/acode-plugins/bulma/icon.png" width="25%" />
   <br>
   <img alt="License" src="https://img.shields.io/badge/License-Apache%202.0-cyan.svg"/>
   <img alt="Version" src="https://img.shields.io/badge/Latest%20version-V1.0.1-cyan"/>
