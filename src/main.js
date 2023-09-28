@@ -1,52 +1,94 @@
 import plugin from '../plugin.json';
 import style from './styles/style.scss';
+const toast = acode.require('toast');;
 
-const settings = acode.require('settings');
-const { editor } = editorManager;
-const name_theme = 'night-owl';
+class bulma {
 
-ace.define(`ace/theme/${name_theme}.css`, ['require', 'exports', 'module'], function (require, exports, module) {
-  module.exports = style;
-});
+  async fetch_bulma() {
+    try {
+      const response = await fetch(plugin.url);
+      const extractedCss = await response.text();
+      const classRegex = /\.(?!\d)([\w-]+)/g;
+      const classes = new Set();
+      let match;
+      while ((match = classRegex.exec(extractedCss))) {
+        classes.add(match[1]);
+      }
+      return Array.from(classes);
+    } catch (err) {
+      acode.alert(err.message);
+      return [];
+    }
+  }
 
-ace.define(`ace/theme/${name_theme}`, ['require', 'exports', 'module', `ace/theme/${name_theme}.css`, 'ace/lib/dom'], function (require, exports, module) {
-  exports.isDark = true;
-  exports.cssClass = `ace-${name_theme}`;
-  exports.cssText = require(`./${name_theme}.css`);
-  const dom = require('../lib/dom');
-  dom.importCssString(exports.cssText, exports.cssClass, false);
-});
-
-class Editor {
-  async init() {
-    ace.require('ace/ext/themelist').themes.push({
-      caption: name_theme.split('-').map(name => name[0].toUpperCase() + name.slice(1)).join(' '),
-      theme: `ace/theme/${name_theme}`,
-      isDark: true
-    });
-
-    const current  = settings.get('editorTheme');
-    if (current  === name_theme) editor.setTheme(`ace/theme/${name_theme}`);
-    settings.on('update', this.check);
-  };
-
-  async destroy() {
-    settings.off('update', this.check);
-    editor.setTheme(null); 
-  };
-
-  check(value) {
-    if (value === `ace/theme/${name_theme}`) {
-      editor.setTheme(`ace/theme/${name_theme}`);
-      settings.update({ editorTheme: name_theme });
+  Autocompletion(classes) {
+    let staticWordCompleter = {
+      getCompletions: (editor, session, pos, prefix, callback) => {
+        if (session.getMode().$id === 'ace/mode/html' || session.getMode().$id === 'ace/mode/jsx') {
+          let line = session.getLine(pos.row).substr(0, pos.column);
+          if (line.includes('class="') || line.includes('className="')) {
+    callback(null, classes.map(function (word) {
+      return {
+        caption: word,
+        value: word,
+        meta: "bulma"
+      };
+    }));
+    return;
+          } else {
+    callback(null, []);
+          }
+        }
+        callback(null, []);
+      }
     };
+    editorManager.editor.completers.unshift(staticWordCompleter);
   };
- };
+
+  async init(cacheFileUrl, cacheFile) {
+
+    this.style = <style textContent={style}></style>;
+    document.head.append(this.style);
+    
+  const bulma_classes = await cacheFile?.readFile('utf8');
+  
+  if (bulma_classes) (this.Autocompletion(JSON.parse(bulma_classes)));
+    
+  const classes = await this.fetch_bulma();
+  await cacheFile?.writeFile(JSON.stringify(classes));
+  this.Autocompletion(classes);
+  this.$cacheFile = cacheFile;
+    
+  };
+  
+  async clear() {
+   await this.$cacheFile?.writeFile("");
+   toast('Bulma plugin cache was successfully cleared!', 3000)
+  };
+  
+  get config() {
+    return { 
+      list: [{ 
+        key: "bulma_clear", 
+        text: "Clear Cache", 
+        info: "Remove cache the bulma from acode" }], 
+      cb: (key, value) => { 
+        this.clear();
+      }
+    }
+  };
+  
+  async destroy() {
+    this.clear();
+    this.Autocompletion([]);
+    this.style?.remove();
+  };
+};
 
 if (window.acode) {
-  
-  acode.setPluginInit(plugin.id, () => new Editor().init());
-  
-  acode.setPluginUnmount(plugin.id, () => new Editor().destroy());
-  
+
+  acode.setPluginInit(plugin.id, ({ cacheFileUrl, cacheFile }) => new bulma().init(cacheFileUrl, cacheFile), new bulma().config);
+
+  acode.setPluginUnmount(plugin.id, () => new bulma().destroy());
+
 };

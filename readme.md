@@ -1,22 +1,47 @@
 <div align="center">
-<h1>Night Owl (Editor Theme)</h1>
+<h1>Bulma IntelliSense</h1>
 </div>
 
 <div align="center"> 
- <img alt="profile" src="https://raw.githubusercontent.com/sebastianjnuwu/acode-plugins/theme-editor/icon.png" width="60%" />
+ <img alt="profile" src="data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iNDIiIGhlaWdodD0iNjQiIHZpZXdCb3g9IjAgMCA0MiA2NCIgZmlsbD0ibm9uZSIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj4KPHBhdGggZmlsbC1ydWxlPSJldmVub2RkIiBjbGlwLXJ1bGU9ImV2ZW5vZGQiIGQ9Ik0wIDQ0TDMuODE4MTggMTZMMTkuMDkwOSAwTDM4LjE4MTggMjBMMjYuNzI3MyAzMkw0MiA0OEwxOS4wOTA5IDY0TDAgNDRaIiBmaWxsPSIjMDBEMUIyIi8+Cjwvc3ZnPgo=" width="25%" />
   <br>
-  <img alt="License" src="https://img.shields.io/badge/License-Apache%202.0-purple.svg"/>
-  <img alt="Version" src="https://img.shields.io/badge/Latest%20version-V1.0.8-purple"/>
-
-<p>Explore the night world with <strong>"Night Owl"</strong> theme for editor! Unleash your creativity and code in comfort wherever you are. Master the art of programming with elegance and practicality! 🌙🦉</p>
-
+  <img alt="License" src="https://img.shields.io/badge/License-Apache%202.0-cyan.svg"/>
+  <img alt="Version" src="https://img.shields.io/badge/Latest%20version-V1.0.1-cyan"/>
 </div>
 
-<div align="center"> 
-<img src="https://cdn.discordapp.com/attachments/1128027443245105184/1135073071867363489/Screenshot_20230729-1735012.jpg" style="border-radius: 20px;" width="90%%" />
-</div>
+# About
 
-<strong>Open source:</strong> Want to see the code? click <a href="https://github.com/sebastianjnuwu/acode-plugins/tree/theme-editor">here</a> and don't forget the little star!
+  <b>Bulma</b> is a CSS library. This means it provides CSS classes to help you style your HTML code.
+
+## Starter template
+
+If you want to get started right away, you can use this HTML starter template. Just copy/paste this code in a file and save it on your computer.
+
+```html
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Hello Bulma!</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.4/css/bulma.min.css">
+  </head>
+  <body>
+  <section class="section">
+    <div class="container">
+      <h1 class="title">
+        Hello World
+      </h1>
+      <p class="subtitle">
+        My first website with <strong>Bulma</strong>!
+      </p>
+    </div>
+  </section>
+  </body>
+</html>
+```
+
+<strong>Open source:</strong> Want to see the code? click <a href="https://github.com/sebastianjnuwu/acode-plugins/tree/bulma">here</a> and don't forget the little star!
 
 <strong>Report bugs:</strong> Found bugs? Report now by clicking <a href="https://github.com/sebastianjnuwu/acode-plugins/issues">here!</a><br>
 
