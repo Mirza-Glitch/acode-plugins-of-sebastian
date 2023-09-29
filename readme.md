@@ -11,35 +11,13 @@
 
 # About
 
-  <b>Bulma</b> is a CSS library. This means it provides CSS classes to help you style your HTML code.
+ <i>Bulma</i> is a completely free CSS framework, inspired by Bootstrap and based on Flexbox, which already has great compatibility between browsers. 
+ 
+ <b>• Docs:</b> https://bulma.io/documentation
 
-## Starter template
-
-If you want to get started right away, you can use this HTML starter template. Just copy/paste this code in a file and save it on your computer.
-
-```html
-<!DOCTYPE html>
-<html>
-  <head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Hello Bulma!</title>
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.4/css/bulma.min.css">
-  </head>
-  <body>
-  <section class="section">
-    <div class="container">
-      <h1 class="title">
-        Hello World
-      </h1>
-      <p class="subtitle">
-        My first website with <strong>Bulma</strong>!
-      </p>
-    </div>
-  </section>
-  </body>
-</html>
-```
+<div align="center"> 
+ <img src="https://cdn.discordapp.com/attachments/1128027443245105184/1157133692091760640/Screenshot_20230928-2252132.jpg" style="border-radius: 20px;" width="90%%" />
+</div>
 
 <strong>Open source:</strong> Want to see the code? click <a href="https://github.com/sebastianjnuwu/acode-plugins/tree/bulma">here</a> and don't forget the little star!
 
