@@ -1,93 +1,86 @@
 import plugin from '../plugin.json';
 import style from './styles/style.scss';
-const toast = acode.require('toast');;
 
 class bulma {
+  
+  async fetch() {
+    
+   const res = await fetch(plugin.url).then((x) => x.text()).catch(() => {});
+  
+   const regex = /\.(?!\d)([\w-]+)/g;
+   const Class = new Set();
+   let match;
+  
+   while ((match = regex.exec(res))) {
+     Class.add(match[1]);
+   };
 
-  async fetch_bulma() {
-    try {
-      const response = await fetch(plugin.url);
-      const extractedCss = await response.text();
-      const classRegex = /\.(?!\d)([\w-]+)/g;
-      const classes = new Set();
-      let match;
-      while ((match = classRegex.exec(extractedCss))) {
-        classes.add(match[1]);
-      }
-      return Array.from(classes);
-    } catch (err) {
-      acode.alert(err.message);
-      return [];
-    }
-  }
+   return Array.from(Class);
+  };
 
-  Autocompletion(classes) {
-    let staticWordCompleter = {
-      getCompletions: (editor, session, pos, prefix, callback) => {
-        if (session.getMode().$id === 'ace/mode/html' || session.getMode().$id === 'ace/mode/jsx') {
-          let line = session.getLine(pos.row).substr(0, pos.column);
-          if (line.includes('class="') || line.includes('className="')) {
-    callback(null, classes.map(function (word) {
+  async completion(_class) {
+    
+   const completion = {
+  
+    getCompletions: (editor, session, pos, prefix, callback) => {
+   
+   if (session.getMode().$id === 'ace/mode/html' || session.getMode().$id === 'ace/mode/jsx') {
+     
+   let line = session.getLine(pos.row).substr(0, pos.column);
+   
+   if (line.includes('class="') || line.includes('className="')) {
+  
+     callback(null, _class.map((word) => {
       return {
         caption: word,
         value: word,
         meta: "bulma"
       };
     }));
-    return;
-          } else {
-    callback(null, []);
-          }
-        }
-        callback(null, []);
-      }
-    };
-    editorManager.editor.completers.unshift(staticWordCompleter);
-  };
-
-  async init(cacheFileUrl, cacheFile) {
-
-    this.style = <style textContent={style}></style>;
-    document.head.append(this.style);
-    
-  const bulma_classes = await cacheFile?.readFile('utf8');
-  
-  if (bulma_classes) (this.Autocompletion(JSON.parse(bulma_classes)));
-    
-  const classes = await this.fetch_bulma();
-  await cacheFile?.writeFile(JSON.stringify(classes));
-  this.Autocompletion(classes);
-  this.$cacheFile = cacheFile;
-    
-  };
-  
-  async clear() {
-   await this.$cacheFile?.writeFile("");
-   toast('Bulma plugin cache was successfully cleared!', 3000)
-  };
-  
-  get config() {
-    return { 
-      list: [{ 
-        key: "bulma_clear", 
-        text: "Clear Cache", 
-        info: "Remove cache the bulma from acode" }], 
-      cb: (key, value) => { 
-        this.clear();
-      }
+     return;
+     
+    } else {
+      callback(null, []);
+     }
     }
+    
+   callback(null, []);
+   
+     }
+   };
+   
+    editorManager.editor.completers.unshift(completion);
+    
+  };
+
+  async init(cache) {
+   
+   this.file = cache.cacheFile;
+   this.style = <style textContent={style}></style>;
+   document.head.append(this.style);
+   
+   const bulma = await this.file.readFile('utf8');
+  
+   if (!bulma) {
+    const word = await this.fetch();
+    await this.file.writeFile(JSON.stringify(word));
+    this.completion(word);
+    return;
+  };
+   
+    this.completion(JSON.parse(bulma));
+  
   };
   
   async destroy() {
-    this.clear();
-    this.Autocompletion([]);
-    this.style?.remove();
+    this.completion([]);
   };
+  
 };
 
 if (window.acode) {
 
-  acode.setPluginInit(plugin.id, ({ cacheFileUrl, cacheFile }) => new bulma().init(cacheFileUrl, cacheFile), new bulma().config);
+  acode.setPluginInit(plugin.id, (url, page, cache) => new bulma().init(cache));
 
   acode.setPluginUnmount(plugin.id, () => new bulma().destroy());
 
